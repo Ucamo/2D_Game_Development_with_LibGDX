@@ -35,18 +35,27 @@ public class RectangularFlower extends ApplicationAdapter {
     public void render () {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        shapeRenderer.begin(ShapeType.Filled);
+        shapeRenderer.begin(ShapeType.Line);
         shapeRenderer.setColor(Color.GREEN);
         shapeRenderer.rectLine(100, 0, 100, 300, 20);
 
         // TODO: Draw two leaves on the stem
 
-        // TODO: Set the active color to yellow
+        shapeRenderer.rect(70, 200, 50, 50, 40, 40, 1, 1, 60);
+        shapeRenderer.rect(60,50,50,50,40,40,1,1,-60);
 
+        // TODO: Set the active color to yellow
+        shapeRenderer.setColor(Color.YELLOW);
         // TODO: Use a loop to draw 20 of these petals in a circle
 
-        float petalAngle = 45.0f;
-        shapeRenderer.rect(100, 300, 0, 0, 40, 40, 1, 1, petalAngle);
+
+        for(int x=0; x<=360;x+=10)
+        {
+            float petalAngle = x;
+            shapeRenderer.rect(100, 300, 0, 0, 40, 40, 1, 1, petalAngle);
+
+        }
+
 
         shapeRenderer.end();
     }
