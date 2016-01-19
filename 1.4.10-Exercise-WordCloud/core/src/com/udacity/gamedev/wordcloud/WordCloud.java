@@ -66,12 +66,16 @@ public class WordCloud extends ApplicationAdapter {
         for (Word word : words) {
 
             // TODO: Set the font's scale using font.getData().setScale()
-
+            font.getData().setScale(word.scale);
 
             // TODO: Set the font's tint using font.setColor()
+            font.setColor(word.color);
 
 
             // TODO: Actually draw the word using font.draw()
+            float width= word.x*Gdx.graphics.getWidth();
+            float height=word.y*Gdx.graphics.getHeight();
+            font.draw(batch,word.letters,width,height);
 
         }
         batch.end();
