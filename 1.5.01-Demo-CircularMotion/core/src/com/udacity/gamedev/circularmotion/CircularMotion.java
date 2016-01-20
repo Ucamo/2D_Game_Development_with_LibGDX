@@ -84,7 +84,7 @@ public class CircularMotion extends ApplicationAdapter {
         renderer.circle(x, y, CIRCLE_RADIUS);
 
         // Uncomment the next line to see the sort of beautiful things you can create with simple movement
-//         drawFancyCircles(renderer, elapsedPeriods, 20);
+        drawFancyCircles(renderer, elapsedPeriods, 20);
         renderer.end();
     }
 
