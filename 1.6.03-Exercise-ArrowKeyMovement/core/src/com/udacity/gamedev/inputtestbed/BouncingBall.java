@@ -54,10 +54,10 @@ public class BouncingBall {
     public void update(float delta, Viewport viewport) {
 
         // Growing and shrinking
-        if (Gdx.input.isKeyPressed(Keys.Z)){
+        if (Gdx.input.isKeyPressed(Keys.Z)) {
             radiusMultiplier += delta * RADIUS_GROWTH_RATE;
         }
-        if (Gdx.input.isKeyPressed(Keys.X)){
+        if (Gdx.input.isKeyPressed(Keys.X)) {
             radiusMultiplier -= delta * RADIUS_GROWTH_RATE;
             radiusMultiplier = Math.max(radiusMultiplier, MIN_RADIUS_MULTIPLIER);
         }
@@ -65,18 +65,34 @@ public class BouncingBall {
         radius = radiusMultiplier * BASE_RADIUS;
 
         // TODO: Subtract delta * ACCELERATION from velocity.x if the left arrow key is pressed (Hint: Keys.LEFT)
-
+        if (Gdx.input.isKeyPressed(Keys.LEFT))
+        {
+            velocity.x -= delta*ACCELERATION;
+        }
 
         // TODO: Handle Keys.RIGHT
+        if(Gdx.input.isKeyPressed(Keys.RIGHT))
+        {
+            velocity.x+=delta*ACCELERATION;
+        }
 
 
         // TODO: Handle Keys.UP
+        if(Gdx.input.isKeyPressed(Keys.UP))
+        {
+            velocity.y+=delta*ACCELERATION;
+        }
 
 
         // TODO: Handle Keys.DOWN
+        if(Gdx.input.isKeyPressed(Keys.DOWN))
+        {
+            velocity.y-=delta*ACCELERATION;
+        }
 
 
         // TODO: Use velocity.clamp() to limit the total speed to MAX_SPEED
+        velocity.clamp(0,MAX_SPEED);
 
 
         velocity.x -= delta * DRAG * velocity.x;
