@@ -14,9 +14,9 @@ public class Icicle {
 
 
     // TODO: Add a constructor that sets the position
-    public Icicle()
+    public Icicle(Vector2 position)
     {
-        position= new Vector2(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
+        this.position= position;
     }
 
     // TODO: Add a render function that takes a ShapeRenderer
@@ -24,15 +24,18 @@ public class Icicle {
     {
 
         // TODO: Set the ShapeRenderer's color
-        shapeRenderer.setColor(Color.CYAN);
+        shapeRenderer.setColor(Constants.ICICLE_COLOR);
 
         // TODO: Set the ShapeType
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
 
 
         // TODO: Draw the icicle using the size constants
-        shapeRenderer.circle(10,10,10);
-        shapeRenderer.end();
+        shapeRenderer.triangle(
+                position.x, position.y,
+                position.x - Constants.ICICLES_WIDTH / 2, position.y + Constants.ICICLES_HEIGHT,
+                position.x + Constants.ICICLES_WIDTH / 2, position.y + Constants.ICICLES_HEIGHT
+        );
 
     }
 
