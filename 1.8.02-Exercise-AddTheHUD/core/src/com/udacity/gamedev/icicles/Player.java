@@ -17,11 +17,13 @@ public class Player {
     Viewport viewport;
 
     // TODO: Add counter for number of deaths
+    int deaths;
 
 
     public Player(Viewport viewport) {
         this.viewport = viewport;
         // TODO: Set number of deaths to zero
+        deaths=0;
 
         init();
     }
@@ -61,6 +63,8 @@ public class Player {
             }
         }
         // TODO: If the player was hit, increment death counter
+        if(isHit)
+            deaths++;
 
 
         return isHit;
