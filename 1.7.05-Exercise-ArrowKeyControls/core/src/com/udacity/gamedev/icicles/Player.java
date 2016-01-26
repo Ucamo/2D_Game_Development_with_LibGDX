@@ -1,5 +1,7 @@
 package com.udacity.gamedev.icicles;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
@@ -25,6 +27,14 @@ public class Player {
 
     public void update(float delta) {
         // TODO: Use Gdx.input.isKeyPressed() to move the player in the appropriate direction when an arrow key is pressed
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT))
+        {
+            position.x -= delta*Constants.PLAYER_SPEED;
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+        {
+            position.x+=delta*Constants.PLAYER_SPEED;
+        }
 
 
         ensureInBounds();
@@ -32,6 +42,15 @@ public class Player {
 
     private void ensureInBounds() {
         // TODO: Complete this function to ensure the player is within the viewport
+        if(position.x-Constants.PLAYER_HEAD_RADIUS<0)
+        {
+            position.x=Constants.PLAYER_HEAD_RADIUS;
+        }
+
+        if(position.x+Constants.PLAYER_HEAD_RADIUS>viewport.getWorldWidth())
+        {
+            position.x=viewport.getWorldWidth()-Constants.PLAYER_HEAD_RADIUS;
+        }
 
     }
 
