@@ -49,6 +49,10 @@ public class IciclesScreen implements Screen {
         icicles.update(delta);
         player.update(delta);
         // TODO: Check if the player was hit by an icicle. If so, reset the icicles.
+        if(player.hitByIcicle(icicles))
+        {
+            icicles.init();
+        }
 
 
 
