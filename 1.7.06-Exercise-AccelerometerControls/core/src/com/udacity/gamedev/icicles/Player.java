@@ -33,9 +33,12 @@ public class Player {
         }
 
         // TODO: Compute accelerometer input = raw input / (gravity * sensitivity)
+        float gravitySensitivity = Constants.ACCELEROMETER_SENSITIVITY*Constants.GRAVITATIONAL_ACCELERATION;
+        float accelerometerY = Gdx.input.getAccelerometerY()/gravitySensitivity;
 
 
         // TODO: Use the accelerometer input to move the player
+        position.x += delta * accelerometerY * Constants.PLAYER_MOVEMENT_SPEED;
 
 
         ensureInBounds();
